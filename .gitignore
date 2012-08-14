@@ -1,0 +1,18 @@
+.coverage
+.hg
+.hgignore
+.hgtags
+htmlcov
+tags
+
+syntax: glob
+*.egg
+*.egg-info
+*.py?
+*.so
+*.sw?
+*.tmp
+*~
+.DS_Store
+
+syntax: regexp

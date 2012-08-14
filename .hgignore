@@ -13,4 +13,6 @@ doc/_build
 eggs
 .coverage
 htmlcov
+.git
+.gitignore
 
