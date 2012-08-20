@@ -25,6 +25,4 @@ from fanstatic.core import (Library,
                             set_resource_file_existence_checking,
                             UnknownResourceError)
 
-from fanstatic.registry import get_library_registry, LibraryRegistry
-
 from fanstatic.codegen import generate_code
