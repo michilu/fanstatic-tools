@@ -19,17 +19,8 @@ setup(
     packages=['fanstatic'],
     include_package_data=True,
     zip_safe=False,
-    install_requires=['Paste', 'WebOb'],
+    install_requires=['WebOb'],
     extras_require = dict(
         test=['pytest >= 2.0'],
         ),
-    entry_points = {
-        'paste.filter_app_factory': [
-            'fanstatic = fanstatic:make_fanstatic',
-            'publisher = fanstatic:make_publisher',
-            'injector = fanstatic:make_injector',
-            ],
-        'paste.app_factory': [
-            'serf = fanstatic:make_serf',
-            ],
-    })
+    )
