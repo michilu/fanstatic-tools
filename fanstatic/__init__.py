@@ -28,5 +28,3 @@ from fanstatic.core import (Library,
 from fanstatic.registry import get_library_registry, LibraryRegistry
 
 from fanstatic.codegen import generate_code
-
-from fanstatic.injector import Injector, make_injector

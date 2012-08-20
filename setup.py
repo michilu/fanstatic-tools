@@ -19,7 +19,6 @@ setup(
     packages=['fanstatic'],
     include_package_data=True,
     zip_safe=False,
-    install_requires=['WebOb'],
     extras_require = dict(
         test=['pytest >= 2.0'],
         ),
