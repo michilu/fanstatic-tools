@@ -60,12 +60,12 @@ def test_render_bundle():
 <link rel="stylesheet" type="text/css" href="/fanstatic/foo/c.css" />'''
 
     needed = NeededResources(resources=[x1, x2, x3], bundle=True)
-    assert needed.render() == '''<link rel="stylesheet" type="text/css" href="/fanstatic/foo/:bundle:a.css;b.css" />
+    assert needed.render() == '''<link rel="stylesheet" type="text/css" href="/fanstatic/foo/+bundle+a.css+b.css" />
 <link rel="stylesheet" type="text/css" href="/fanstatic/foo/c.css" />'''
 
     x4 = Resource(foo, 'subdir/subdir/x4.css')
     x5 = Resource(foo, 'subdir/subdir/x5.css')
     needed = NeededResources(resources=[x1, x2, x4, x5], bundle=True)
-    assert needed.render() == '''<link rel="stylesheet" type="text/css" href="/fanstatic/foo/:bundle:a.css;b.css" />
-<link rel="stylesheet" type="text/css" href="/fanstatic/foo/subdir/subdir/:bundle:x4.css;x5.css" />'''
+    assert needed.render() == '''<link rel="stylesheet" type="text/css" href="/fanstatic/foo/+bundle+a.css+b.css" />
+<link rel="stylesheet" type="text/css" href="/fanstatic/foo/subdir/subdir/+bundle+x4.css+x5.css" />'''
 

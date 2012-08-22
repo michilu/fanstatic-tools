@@ -7,9 +7,9 @@ import fanstatic.checksum
 
 DEFAULT_SIGNATURE = 'fanstatic'
 
-VERSION_PREFIX = ':version:'
+VERSION_PREFIX = '+version+'
 
-BUNDLE_PREFIX = ':bundle:'
+BUNDLE_PREFIX = '+bundle+'
 
 NEEDED = 'fanstatic.needed'
 
@@ -1103,7 +1103,7 @@ class Bundle(Renderable):
         paths = [resource.filename for resource in self._resources]
         # URL may become too long:
         # http://www.boutell.com/newfaq/misc/urllength.html
-        relpath = ''.join([self.dirname, BUNDLE_PREFIX, ';'.join(paths)])
+        relpath = ''.join([self.dirname, BUNDLE_PREFIX, '+'.join(paths)])
         return self.renderer('%s/%s' % (library_url, relpath))
 
     def fits(self, resource):

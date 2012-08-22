@@ -533,7 +533,7 @@ def test_library_url_version_hashing(tmpdir):
 
     needed = NeededResources(versioning=True)
     url = needed.library_url(foo)
-    assert re.match('/fanstatic/foo/:version:[0-9T:.-]*$', url)
+    assert re.match('/fanstatic/foo/\+version\+[0-9T:.-]*$', url)
 
     # The md5 based version URL is available through the
     # `versioning_use_md5` parameter:
@@ -543,7 +543,7 @@ def test_library_url_version_hashing(tmpdir):
 
     # If the Library defines a version, the version is used.
     bar = Library('bar', '', version='1')
-    assert needed.library_url(bar) == '/fanstatic/bar/:version:1'
+    assert needed.library_url(bar) == '/fanstatic/bar/+version+1'
 
 
 def test_library_url_hashing_norecompute(tmpdir):
@@ -1192,7 +1192,7 @@ def test_bundle_resources_bottomsafe():
 
     needed = NeededResources(resources=[a,b], bundle=True)
     assert needed.render_topbottom() == ('''\
-<link rel="stylesheet" type="text/css" href="/fanstatic/foo/:bundle:a.css;b.css" />''', '')
+<link rel="stylesheet" type="text/css" href="/fanstatic/foo/+bundle+a.css+b.css" />''', '')
 
     needed = NeededResources(resources=[a,b], bundle=True, bottom=True)
     assert needed.render_topbottom() == ('''\
