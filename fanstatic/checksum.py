@@ -38,9 +38,8 @@ def md5(path):
         try:
             f = open(path, 'rb')
             while True:
-                # 256kb chunks.
-                # XXX how to optimize chunk size?
-                chunk = f.read(0x40000)
+                # 64kB chunks.
+                chunk = f.read(0x10000)
                 if not chunk:
                     break
                 chcksm.update(chunk)
