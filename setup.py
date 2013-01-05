@@ -17,6 +17,12 @@ setup(
     license='BSD',
     url='http://fanstatic.org',
     packages=['fanstatic'],
+    py_modules=['mkfanstaticsymlink'],
+    entry_points={
+      'console_scripts': [
+        'mkfanstaticsymlink = mkfanstaticsymlink:main',
+        ]
+    },
     include_package_data=True,
     zip_safe=False,
     extras_require = dict(
