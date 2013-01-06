@@ -4,6 +4,7 @@ import re
 import threading
 
 import fanstatic.checksum
+import six
 
 DEFAULT_SIGNATURE = 'fanstatic'
 
@@ -374,9 +375,9 @@ class Resource(Renderable, Dependable):
             # If we do not know about the filename extension inclusion
             # order, we render the resource after all others.
             self.order, _ = inclusion_renderers.get(
-                self.ext, (sys.maxint, None))
+                self.ext, (six.MAXSIZE, None))
 
-        assert not isinstance(depends, basestring)
+        assert not isinstance(depends, six.string_types)
         self.depends = set()
         if depends is not None:
             # Normalize groups into the underlying resources...
@@ -399,7 +400,7 @@ class Resource(Renderable, Dependable):
         for mode_name, argument in [(DEBUG, debug), (MINIFIED, minified)]:
             if argument is None:
                 continue
-            elif isinstance(argument, basestring):
+            elif isinstance(argument, six.string_types):
                 mode_resource = Resource(library, argument, bottom=bottom)
             else:
                 # The dependencies of a mode resource should be the same
@@ -411,7 +412,7 @@ class Resource(Renderable, Dependable):
             mode_resource.dependency_nr = self.dependency_nr
             self.modes[mode_name] = mode_resource
 
-        assert not isinstance(supersedes, basestring)
+        assert not isinstance(supersedes, six.string_types)
         self.supersedes = supersedes or []
 
         self.rollups = []
@@ -518,7 +519,7 @@ class Slot(Renderable, Dependable):
         self.ext = extension
         self.required = required
 
-        assert not isinstance(depends, basestring)
+        assert not isinstance(depends, six.string_types)
         self.depends = set()
         if depends is not None:
             # Normalize groups into the underlying resources...

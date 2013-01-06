@@ -1,11 +1,12 @@
 from fanstatic import DEBUG, MINIFIED
+import six
 
 BOOL_CONFIG = set(['versioning', 'recompute_hashes', DEBUG, MINIFIED,
                    'bottom', 'force_bottom', 'bundle', 'rollup',
                    'versioning_use_md5'])
 
 def asbool(obj):
-    if isinstance(obj, (str, unicode)):
+    if isinstance(obj, (str, six.text_type)):
         obj = obj.strip().lower()
         if obj in ['true', 'yes', 'on', 'y', 't', '1']:
             return True
