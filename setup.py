@@ -19,7 +19,7 @@ class PyTestWithCov(PyTest):
 
 setup(
     name='fanstatic-tools',
-    version='0.1',
+    version='0.2',
     description="fanstatic tools",
     classifiers=[
       "Programming Language :: Python :: 2.6",
@@ -32,7 +32,7 @@ setup(
     author='ENDOH takanao',
     long_description=open('README.rst').read(),
     license='BSD',
-    url='http://fanstatic.org',
+    url='http://github.com/MiCHiLU/fanstatic-tools',
     install_requires=['six'],
     packages=['fanstatic'],
     py_modules=['mkfanstaticsymlink'],
