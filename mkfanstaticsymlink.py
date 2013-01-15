@@ -64,6 +64,8 @@ URLs to resources will start with ``/fanstatic/``.""")
       if not os.path.exists(base_directory):
         os.mkdir(base_directory)
       if not os.path.exists(target_file):
+        if os.path.lexists(target_file):
+          os.remove(target_file)
         os.symlink(source_file, target_file)
 
 if __name__== "__main__":
