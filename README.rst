@@ -17,14 +17,14 @@ know more about this tool.
 ::
 
   $ mkfanstaticsymlink
-  make symlink fanstatic/angularjs to gae/site-packages/js/angular/resources
-  make symlink fanstatic/bootstrap to gae/site-packages/js/bootstrap/resources
-  make symlink fanstatic/jquery to gae/site-packages/js/jquery/resources
+  make symlink fanstatic/angularjs to ../site-packages/js/angular/resources
+  make symlink fanstatic/bootstrap to ../site-packages/js/bootstrap/resources
+  make symlink fanstatic/jquery to ../site-packages/js/jquery/resources
 
-  $ PYTHONPATH=gae/site-packages mkfanstaticsymlink --versioning --versioning_use_md5 --base_url=gae/static --publisher_signature=lib --dry-run
-  make symlink gae/static/lib/angularjs/+version+643d90594087d56cea34e2b460fc94f2 to gae/site-packages/js/angular/resources
-  make symlink gae/static/lib/bootstrap/+version+94b615ca583b25c0374fac2f91e6a814 to gae/site-packages/js/bootstrap/resources
-  make symlink gae/static/lib/jquery/+version+171ea6989058db3f1fa646d1292bb650 to gae/site-packages/js/jquery/resources
+  $ mkfanstaticsymlink --sys_path_appends=site-packages --versioning --versioning_use_md5 --base_url=static --publisher_signature=lib --dry-run
+  make symlink static/lib/angularjs/+version+643d90594087d56cea34e2b460fc94f2 to ../../../site-packages/js/angular/resources
+  make symlink static/lib/bootstrap/+version+94b615ca583b25c0374fac2f91e6a814 to ../../../site-packages/js/bootstrap/resources
+  make symlink static/lib/jquery/+version+171ea6989058db3f1fa646d1292bb650 to ../../../site-packages/js/jquery/resources
 
 
 Installation

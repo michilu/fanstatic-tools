@@ -15,6 +15,7 @@ def main():
   logging.getLogger().setLevel(logging.INFO)
   parser = OptionParser()
   parser.add_option("--dry-run", action="store_true", dest="dry_run", help="dry run")
+  parser.add_option("--sys_path_appends", dest="sys_path_appends", default="", help="Appends the search path for modules (sys.path). You can be joined with colons(:)")
   parser.add_option("--versioning", action="store_true", dest="versioning", help="""\
 If ``True``, Fanstatic will automatically include
 a version identifier in all URLs pointing to resources.
@@ -40,7 +41,10 @@ URLs to resources will start with ``/fanstatic/``.""")
   (options, _args) = parser.parse_args()
   fanstatic_options = dict(options.__dict__)
   fanstatic_options.pop("dry_run")
+  fanstatic_options.pop("sys_path_appends")
   needed = fanstatic.NeededResources(**fanstatic_options)
+  for path in options.sys_path_appends.split(":"):
+    sys.path.append(path)
   fanstatic_package_names = set(os.path.basename(module_path).split("-", 1)[0]
                                 for module_path in itertools.chain.from_iterable(glob.iglob("%s/js[\.]*" % path) for path in sys.path))
   for fanstatic_package_name in fanstatic_package_names:
@@ -51,8 +55,8 @@ URLs to resources will start with ``/fanstatic/``.""")
       continue
     else:
       library_url = needed.library_url(library.known_resources.values()[0].library)
-      source_file = os.path.join("../../..", library.path)
-      target_file = library_url.lstrip("/")
+      target_file = library_url.lstrip(os.sep)
+      source_file = os.path.join(os.sep.join([os.pardir] * len(os.path.dirname(target_file).split(os.sep))), library.path)
       logging.info("make symlink %s to %s" % (target_file, source_file))
       if options.dry_run:
         continue
