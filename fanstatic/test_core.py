@@ -765,6 +765,7 @@ def test_register_inclusion_renderer():
     needed = NeededResources()
     needed.need(a)
     assert needed.render() == ('<link rel="unknown" href="/fanstatic/foo/nothing.unknown" />')
+    del inclusion_renderers['.unknown']
 
 
 def test_registered_inclusion_renderers_in_order():
